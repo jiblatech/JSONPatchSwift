@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.author       = { "Dominic Frei" => "dominic@dominicfrei.com", "Sebastian Schmidt" => "sebastian.schmidt2@exxeta.com", "Peer Becker" => "peer.becker@exxeta.com" }
   s.source       = { :git => "https://github.com/EXXETA/JSONPatchSwift.git", :tag => "1.2" }
   s.source_files = "JsonPatchSwift"
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "8.3"
   s.dependency   "SwiftyJSON"
 end
