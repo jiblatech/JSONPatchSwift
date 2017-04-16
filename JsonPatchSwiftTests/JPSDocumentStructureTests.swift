@@ -56,7 +56,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             _ = try JPSJsonPatch("!#€%&/()*^*_:;;:;_poawolwasnndaw")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.InvalidJsonFormat(let message) {
+        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.invalidJsonFormat(let message) {
             // Expected behaviour.
             XCTAssertNotNil(message)
         } catch {
@@ -118,7 +118,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             let _ = try JPSJsonPatch("{ \"path\": \"/a/b/c\", \"value\": \"foo\" }")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.InvalidPatchFormat(let message) {
+        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.invalidPatchFormat(let message) {
             // Expected behaviour.
             XCTAssertNotNil(message)
             XCTAssertEqual(message, JPSConstants.JsonPatch.InitialisationErrorMessages.OpElementNotFound)
@@ -131,7 +131,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             let _ = try JPSJsonPatch("{ \"op\": \"add\", \"value\": \"foo\" }")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.InvalidPatchFormat(let message) {
+        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.invalidPatchFormat(let message) {
             // Expected behaviour.
             XCTAssertNotNil(message)
             XCTAssertEqual(message, JPSConstants.JsonPatch.InitialisationErrorMessages.PathElementNotFound)
@@ -153,7 +153,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             let _ = try JPSJsonPatch("{ \"op\": \"add\", \"path\": \"foo\" }")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.InvalidPatchFormat(let message) {
+        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.invalidPatchFormat(let message) {
             // Expected behaviour.
             XCTAssertNotNil(message)
             XCTAssertEqual(message, "Could not find 'value' element.")
@@ -166,7 +166,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             let _ = try JPSJsonPatch("[]")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.InvalidPatchFormat(let message) {
+        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.invalidPatchFormat(let message) {
             // Expected behaviour.
             XCTAssertNotNil(message)
             XCTAssertEqual(message, "Patch array does not contain elements.")
@@ -222,7 +222,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             let _ = try JPSJsonPatch("{\"op\" : \"foo\", \"path\" : \"/a/b\"}")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.InvalidPatchFormat(let message) {
+        } catch JPSJsonPatch.JPSJsonPatchInitialisationError.invalidPatchFormat(let message) {
             // Expected behaviour.
             XCTAssertNotNil(message)
             XCTAssertEqual(message, "Operation is invalid.")
@@ -237,7 +237,7 @@ class JPSDocumentStructureTests: XCTestCase {
         do {
             let _ = try JPSJsonPatch("{\"op\" : \"add\", \"path\" : \"foo\" , \"value\" : \"foo\"}")
             XCTFail("Unreachable code. Should have raised an error.")
-        } catch JPSJsonPointerError.ValueDoesNotContainDelimiter {
+        } catch JPSJsonPointerError.valueDoesNotContainDelimiter {
             // Expected behaviour.
         } catch {
             XCTFail("Unexpected error.")

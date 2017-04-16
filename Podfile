@@ -1,4 +1,6 @@
-platform :ios, '8.0'
+platform :ios, '8.3'
 use_frameworks!
 
-pod 'SwiftyJSON'
+target 'JsonPatchSwift' do
+    pod 'SwiftyJSON'
+end
