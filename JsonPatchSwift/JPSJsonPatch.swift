@@ -83,10 +83,12 @@ public struct JPSJsonPatch {
         
         // Parse the JSON
         var jsonError: NSError?
-        let json = JSON(data: data, options: .allowFragments, error: &jsonError)
-        if let actualError = jsonError {
-            throw JPSJsonPatchInitialisationError.invalidJsonFormat(message: actualError.description)
+        guard let json = try? JSON(data: data, options: .allowFragments) else {
+            throw JPSJsonPatchInitialisationError.invalidJsonFormat(message: "invalidJsonFormat")
         }
+//         if let actualError = jsonError {
+//             throw JPSJsonPatchInitialisationError.invalidJsonFormat(message: actualError.description)
+//         }
 
         try self.init(json)
     }
